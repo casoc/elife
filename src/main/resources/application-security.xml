@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <b:beans xmlns="http://www.springframework.org/schema/security"
-        xmlns:b="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans
+         xmlns:b="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
               http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
               http://www.springframework.org/schema/security
               http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-       <!-- 自动配置模式，拦截所有请求，只有ROLE_USER可通过 -->
-       <http auto-config="true">
-              <intercept-url pattern="/**" access="ROLE_USER" />
-       </http>
+    <!-- 自动配置模式，拦截所有请求，只有ROLE_USER可通过 -->
+    <http auto-config="true">
+        <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/**" access="ROLE_USER"/>
+        <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=1" />
+    </http>
 
-       <!-- 写死的账号密码 -->
-       <authentication-manager>
-              <authentication-provider>
-                     <user-service>
-                            <user name="adviser" authorities="ROLE_USER" password="adviser" />
-                     </user-service>
-              </authentication-provider>
-       </authentication-manager>
+    <!-- 写死的账号密码 -->
+    <authentication-manager>
+        <authentication-provider>
+            <user-service>
+                <user name="adviser" authorities="ROLE_USER" password="adviser"/>
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+
+    <b:bean id="messageSource"
+            class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <b:property name="basename"
+                    value="classpath:i18n/message_uk_UA" />
+    </b:bean>
 </b:beans>
