@@ -17,8 +17,10 @@
     <!-- 写死的账号密码 -->
     <authentication-manager>
         <authentication-provider>
+            <!-- 使用MD5加密密码 -->
+            <password-encoder hash="md5" />
             <user-service>
-                <user name="adviser" authorities="ROLE_USER" password="adviser"/>
+                <user name="adviser" authorities="ROLE_USER" password="c0f7bbe14aaee1b771e9ea23dd7883ea"/>
             </user-service>
         </authentication-provider>
     </authentication-manager>
