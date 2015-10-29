@@ -171,6 +171,46 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>properties-maven-plugin</artifactId>
+                <version>1.0-alpha-2</version>
+                <executions>
+                    <execution>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>read-project-properties</goal>
+                        </goals>
+                        <configuration>
+                            <files>
+                                <file>src/test/resources/properties/database.properties</file>
+                            </files>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>3.4.1</version>
+                <configuration>
+                    <changeLogFile>src/test/resources/changelog.xml</changeLogFile>
+                    <driver>${test.driver}</driver>
+                    <url>${test.url}</url>
+                    <username>${test.username}</username>
+                    <password>${test.password}</password>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-test-resources</phase>
+                        <goals>
+                            <goal>update</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
