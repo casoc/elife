@@ -10,7 +10,7 @@
     <!-- 自动配置模式，拦截所有请求，只有ROLE_USER可通过 -->
     <http auto-config="true">
         <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/**" access="ROLE_USER"/>
+        <intercept-url pattern="/**" access="ROLE_SUPER, ROLE_ADVISER"/>
         <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=1" />
     </http>
 
@@ -19,9 +19,7 @@
         <authentication-provider>
             <!-- 使用MD5加密密码 -->
             <password-encoder hash="md5" />
-            <user-service>
-                <user name="adviser" authorities="ROLE_USER" password="c0f7bbe14aaee1b771e9ea23dd7883ea"/>
-            </user-service>
+                <jdbc-user-service data-source-ref="dataSource" />
         </authentication-provider>
     </authentication-manager>
 
@@ -30,4 +28,7 @@
         <b:property name="basename"
                     value="classpath:i18n/message_uk_UA" />
     </b:bean>
+
+    <b:import resource="application-liquibase.xml" />
+
 </b:beans>
