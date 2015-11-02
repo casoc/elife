@@ -9,8 +9,8 @@
 </head>
 <body onLoad="document.f.j_username.focus();">
 <c:if test="${param.login_error != null}">
-  <span color="red">
-    login fail.<br/><br/>
+  <span style="color: red;">
+    login fail.<br/>
     error:<c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
   </span>
 </c:if>

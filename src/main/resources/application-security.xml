@@ -10,9 +10,15 @@
     <!-- 自动配置模式，拦截所有请求，下面配置的顺序将影响拦截器的顺序，所以/**应该放在最后 -->
     <http auto-config="true" access-denied-page="/accessDenied.jsp">
         <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=1" />
+        <logout logout-success-url="/login.jsp"/>
         <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/admin/*" access="ROLE_SUPER"/>
         <intercept-url pattern="/**" access="ROLE_SUPER, ROLE_ADVISER"/>
+
+        <!-- 会话管理配置 -->
+        <session-management invalid-session-url="/sessionTimeout.jsp">
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
+        </session-management>
     </http>
 
     <authentication-manager>
