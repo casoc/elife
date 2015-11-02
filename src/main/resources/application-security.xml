@@ -7,14 +7,14 @@
               http://www.springframework.org/schema/security
               http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-    <!-- 自动配置模式，拦截所有请求，只有ROLE_USER可通过 -->
-    <http auto-config="true">
-        <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <intercept-url pattern="/**" access="ROLE_SUPER, ROLE_ADVISER"/>
+    <!-- 自动配置模式，拦截所有请求，下面配置的顺序将影响拦截器的顺序，所以/**应该放在最后 -->
+    <http auto-config="true" access-denied-page="/accessDenied.jsp">
         <form-login login-page="/login.jsp" authentication-failure-url="/login.jsp?login_error=1" />
+        <intercept-url pattern="/login.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/admin/*" access="ROLE_SUPER"/>
+        <intercept-url pattern="/**" access="ROLE_SUPER, ROLE_ADVISER"/>
     </http>
 
-    <!-- 写死的账号密码 -->
     <authentication-manager>
         <authentication-provider>
             <!-- 使用MD5加密密码 -->
@@ -28,6 +28,9 @@
         <b:property name="basename"
                     value="classpath:i18n/message_uk_UA" />
     </b:bean>
+
+    <!-- 使用Spring Security标签需要加入这个Bean -->
+    <b:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
 
     <b:import resource="application-liquibase.xml" />
 
