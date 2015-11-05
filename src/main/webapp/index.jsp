@@ -1,5 +1,8 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
+<head>
+    <title>index</title>
+</head>
 <body>
 <div>
     welcome <sec:authentication property="name"/>!!

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<head>
+    <title>Login Page Test Doc</title>
+</head>
+<body>
+    <h1>Login Page Test Doc</h1>
+    <div>
+        <p>Test Case:</p>
+        <ol>
+            <li>
+                visit any page should redirect to <span concordion:assertEquals="visitOtherPath()">User Login</span> page if haven't login.
+            </li>
+            <li>
+                should visit <span concordion:assertEquals="loginSuccess()">index</span> page after login success.
+            </li>
+            <li>
+                <p>should have below error message:</p>
+                <ul>
+                    <li><span concordion:assertEquals="nonexistentUserLogin()">bad credentials</span> when username don't exits</li>
+                    <li><span concordion:assertEquals="incorrectPasswordLogin()">bad credentials</span> when password incorrect</li>
+                    <li><span concordion:assertEquals="loginMoreThanOnce()">Maximum sessions of 1 for this principal exceeded</span> when login same user more than once </li>
+                </ul>
+            </li>
+        </ol>
+
+    </div>
+</body>
+</html>
