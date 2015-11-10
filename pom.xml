@@ -4,13 +4,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.casoc.demo</groupId>
-  <artifactId>elife</artifactId>
+  <artifactId>web-demo</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>elife Maven Webapp</name>
+  <name>Web Demo Maven Webapp</name>
 
   <properties>
-    <jetty.context>/curd</jetty.context>
+    <jetty.context>/web-demo</jetty.context>
     <jetty.port>8080</jetty.port>
     <jetty.stopPort>9080</jetty.stopPort>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
