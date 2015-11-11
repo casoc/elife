@@ -20,7 +20,7 @@ public class LoginPageTest {
 
     @BeforeClass
     public static void setUp() throws IOException {
-        System.setProperty("webdriver.firefox.bin", "E:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
+//        System.setProperty("webdriver.firefox.bin", "E:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe");
         //chromedriver需要单独下载 https://sites.google.com/a/chromium.org/chromedriver/downloads
         System.setProperty("webdriver.chrome.driver", "E:\\windows_tool\\chromedriver_win32\\chromedriver.exe");
         firefoxDriver = new FirefoxDriver();
@@ -33,45 +33,37 @@ public class LoginPageTest {
     }
 
     public String loginSuccess() {
-        WebElement usernameElement = firefoxDriver.findElement(By.name("j_username"));
-        WebElement passwordElement = firefoxDriver.findElement(By.name("j_password"));
-        usernameElement.sendKeys("adviser");
-        passwordElement.sendKeys("adviser");
-        passwordElement.submit();
+        useUsernameAndPasswordLogin(firefoxDriver, "adviser", "adviser");
         return firefoxDriver.getTitle();
     }
 
     public String nonexistentUserLogin() {
         firefoxDriver.get("http://localhost:8080/login.jsp");
-        WebElement usernameElement = firefoxDriver.findElement(By.name("j_username"));
-        WebElement passwordElement = firefoxDriver.findElement(By.name("j_password"));
-        usernameElement.sendKeys("nonexistentUser");
-        passwordElement.sendKeys("nonexistentUser");
-        passwordElement.submit();
+        useUsernameAndPasswordLogin(firefoxDriver, "nonexistentUser", "nonexistentUser");
         return getErrorMessage(firefoxDriver);
     }
 
     public String incorrectPasswordLogin() {
-        WebElement usernameElement = firefoxDriver.findElement(By.name("j_username"));
-        WebElement passwordElement = firefoxDriver.findElement(By.name("j_password"));
-        usernameElement.sendKeys("adviser");
-        passwordElement.sendKeys("incorrectPassword");
-        passwordElement.submit();
+        useUsernameAndPasswordLogin(firefoxDriver, "adviser", "incorrectPassword");
         return getErrorMessage(firefoxDriver);
     }
 
     public String loginMoreThanOnce() {
         chromeDriver.get("http://localhost:8080/");
-        WebElement usernameElement = chromeDriver.findElement(By.name("j_username"));
-        WebElement passwordElement = chromeDriver.findElement(By.name("j_password"));
-        usernameElement.sendKeys("adviser");
-        passwordElement.sendKeys("adviser");
-        passwordElement.submit();
+        useUsernameAndPasswordLogin(chromeDriver, "adviser", "adviser");
         return getErrorMessage(chromeDriver);
     }
 
     private String getErrorMessage(WebDriver webDriver) {
         return webDriver.findElement(By.id("errorMessage")).getText();
+    }
+
+    private void useUsernameAndPasswordLogin(WebDriver driver, String username, String password) {
+        WebElement usernameElement = driver.findElement(By.name("j_username"));
+        WebElement passwordElement = driver.findElement(By.name("j_password"));
+        usernameElement.sendKeys(username);
+        passwordElement.sendKeys(password);
+        passwordElement.submit();
     }
 
     @AfterClass
