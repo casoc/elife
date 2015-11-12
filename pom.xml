@@ -12,10 +12,10 @@
     <properties>
         <jetty.context>/web-demo</jetty.context>
         <jetty.port>8080</jetty.port>
-        <jetty.stopPort>9080</jetty.stopPort>
+        <jetty.stopPort>9090</jetty.stopPort>
+        <jetty.stopKey>STOP</jetty.stopKey>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.spring.version>3.1.1.RELEASE</project.spring.version>
-        <concordion.output.dir>${basedir}/target/concordion</concordion.output.dir>
         <chrome.driver>E:\windows_tool\chromedriver_win32\chromedriver.exe</chrome.driver>
     </properties>
 
@@ -180,7 +180,7 @@
                 <version>8.1.14.v20131031</version>
                 <configuration>
                     <stopPort>${jetty.stopPort}</stopPort>
-                    <stopKey>PARENT</stopKey>
+                    <stopKey>${jetty.stopKey}}</stopKey>
                 </configuration>
                 <executions>
                     <execution>
@@ -247,17 +247,42 @@
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>
+                    <skip>true</skip>
                     <systemProperties>
-                        <!--<property>-->
-                            <!--<name>webdriver.chrome.driver</name>-->
-                            <!--<value>${chrome.driver}</value>-->
-                        <!--</property>-->
                         <property>
-                            <name>webdriver.firefox.bin</name>
-                            <value>${firefox.path}</value>
+                            <name>webdriver.chrome.driver</name>
+                            <value>${chrome.driver}</value>
                         </property>
                     </systemProperties>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>functional-test</id>
+                        <phase>integration-test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <includes>
+                                <include>**/functional/**/*.java</include>
+                            </includes>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                        <configuration>
+                            <skip>false</skip>
+                            <excludes>
+                                <exclude>**/functional/**/*.java</exclude>
+                            </excludes>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
