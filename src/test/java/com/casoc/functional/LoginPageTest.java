@@ -16,7 +16,7 @@ import java.io.IOException;
 public class LoginPageTest {
 
     private static WebDriver firefoxDriver;
-    private static  WebDriver chromeDriver;
+//    private static  WebDriver chromeDriver;
 
     @BeforeClass
     public static void setUp() throws IOException {
@@ -24,7 +24,7 @@ public class LoginPageTest {
         //chromedriver需要单独下载 https://sites.google.com/a/chromium.org/chromedriver/downloads
         System.setProperty("webdriver.chrome.driver", "E:\\windows_tool\\chromedriver_win32\\chromedriver.exe");
         firefoxDriver = new FirefoxDriver();
-        chromeDriver = new ChromeDriver();
+//        chromeDriver = new ChromeDriver();
     }
 
     public String visitOtherPath() {
@@ -48,11 +48,11 @@ public class LoginPageTest {
         return getErrorMessage(firefoxDriver);
     }
 
-    public String loginMoreThanOnce() {
-        chromeDriver.get("http://localhost:8080/");
-        useUsernameAndPasswordLogin(chromeDriver, "adviser", "adviser");
-        return getErrorMessage(chromeDriver);
-    }
+//    public String loginMoreThanOnce() {
+//        chromeDriver.get("http://localhost:8080/");
+//        useUsernameAndPasswordLogin(chromeDriver, "adviser", "adviser");
+//        return getErrorMessage(chromeDriver);
+//    }
 
     private String getErrorMessage(WebDriver webDriver) {
         return webDriver.findElement(By.id("errorMessage")).getText();
@@ -69,6 +69,6 @@ public class LoginPageTest {
     @AfterClass
     public static void destroy() {
         firefoxDriver.close();
-        chromeDriver.close();
+//        chromeDriver.close();
     }
 }
