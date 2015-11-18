@@ -16,6 +16,16 @@
               <property name="contexts" value="test, production"/>
        </bean>
 
+       <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+              <property name="dataSource" ref="dataSource"/>
+              <property name="hibernateProperties" value="classpath:properties/hibernate.properties"/>
+              <property name="packagesToScan" value="com.casoc.demo.entity" />
+       </bean>
+       
+       <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+              <property name="sessionFactory" ref="sessionFactory" />
+       </bean>
+
        <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
               <property name="url" value="${development.url}"/>
               <property name="driverClassName" value="${development.driver}"/>

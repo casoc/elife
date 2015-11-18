@@ -8,7 +8,10 @@ import java.util.List;
 public class User {
 
     @Id
-    @Column(nullable = false, length = 50)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Column(nullable = false, length = 50, unique = true)
     private String username;
 
     @Column(nullable = false, length = 50)
@@ -16,9 +19,6 @@ public class User {
 
     @Column(nullable = false, length = 1)
     private String enabled;
-
-    @OneToMany(targetEntity = Authority.class, fetch = FetchType.LAZY, mappedBy = "username")
-    private List<Authority> authorities;
 
     public String getUsername() {
         return username;
@@ -44,11 +44,11 @@ public class User {
         this.enabled = enabled;
     }
 
-    public List<Authority> getAuthorities() {
-        return authorities;
+    public int getId() {
+        return id;
     }
 
-    public void setAuthorities(List<Authority> authorities) {
-        this.authorities = authorities;
+    public void setId(int id) {
+        this.id = id;
     }
 }

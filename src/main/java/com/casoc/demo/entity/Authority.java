@@ -6,8 +6,12 @@ import javax.persistence.*;
 @Table(name = "authorities")
 public class Authority {
 
-    @JoinColumn(referencedColumnName = "username", nullable = false, updatable = false)
-    @OneToOne(optional = false, targetEntity = User.class)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //使用Entity注解必须要主键
+    private int id;
+
+    @Column(nullable = false, length = 50)
     private String username;
 
     @Column(nullable = false, length = 50)
@@ -27,5 +31,13 @@ public class Authority {
 
     public void setAuthority(String authority) {
         this.authority = authority;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
