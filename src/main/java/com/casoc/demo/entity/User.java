@@ -7,6 +7,8 @@ import java.util.List;
 @Table(name = "users")
 public class User {
 
+    public static final String DEFAULT_PASSWORD = "123456";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

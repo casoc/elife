@@ -26,6 +26,7 @@ public class AdminUserManageService {
     }
 
     public void createUser(User user) {
+        user.setPassword(User.DEFAULT_PASSWORD);
         hibernateTemplate.save(user);
     }
 
