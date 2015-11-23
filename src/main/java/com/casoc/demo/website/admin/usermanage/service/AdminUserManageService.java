@@ -22,7 +22,7 @@ public class AdminUserManageService {
     }
 
     public User findUserByUserName(String username) {
-        return (User) hibernateTemplate.find("from User user where user.enabled = ?", username).get(0);
+        return (User) hibernateTemplate.find("from User user where user.username = ?", username).get(0);
     }
 
     public void createUser(User user) {
@@ -31,6 +31,7 @@ public class AdminUserManageService {
     }
 
     public void updateUser(User user) {
+        user.setPassword(User.DEFAULT_PASSWORD);
         hibernateTemplate.update(user);
     }
 

@@ -19,8 +19,8 @@
     <tr>
       <td><c:out value="${user.username}"/></td>
       <td><c:out value="${user.enabled}"/></td>
-      <td><a href="/user/<c:out value='${user.id}/edit'/>">Edit</a></td>
-      <td><a href="/user/<c:out value='${user.id}/delete'/>">Destroy</a></td>
+      <td><a href="/admin/user/<c:out value='${user.username}/edit'/>">Edit</a></td>
+      <td><a href="/admin/user/<c:out value='${user.username}/delete'/>">Destroy</a></td>
     </tr>
     </c:forEach>
     </tbody>

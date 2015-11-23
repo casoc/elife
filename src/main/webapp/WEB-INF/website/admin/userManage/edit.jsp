@@ -6,7 +6,7 @@
     <title>edit user</title>
 </head>
 <body>
-  <form:form action="/users" method="put">
+  <form:form action="/admin/users" method="put">
       <%@ include file="form.jsp"%>
   </form:form>
 </body>
