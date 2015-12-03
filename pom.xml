@@ -67,6 +67,12 @@
             <version>1.5.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>3.1.0.RELEASE</version>
+            <scope>test</scope>
+        </dependency>
 
         <!-- Compile dependency -->
         <dependency>
@@ -214,7 +220,7 @@
                 </executions>
             </plugin>
 
-            <plugin>
+           <!-- <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>properties-maven-plugin</artifactId>
                 <version>1.0-alpha-2</version>
@@ -238,7 +244,7 @@
                 <artifactId>liquibase-maven-plugin</artifactId>
                 <version>3.4.1</version>
                 <configuration>
-                    <changeLogFile>src/test/resources/changelog.xml</changeLogFile>
+                    <changeLogFile>src/test/resources/changelog-maven.xml</changeLogFile>
                     <driver>${test.driver}</driver>
                     <url>${test.url}</url>
                     <username>${test.username}</username>
@@ -253,7 +259,7 @@
                     </execution>
                 </executions>
             </plugin>
-
+-->
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <configuration>

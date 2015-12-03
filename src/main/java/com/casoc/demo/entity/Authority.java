@@ -14,9 +14,6 @@ public class Authority implements GrantedAuthority {
     //使用Entity注解必须要主键
     private int id;
 
-    @Column(name = "user_id", nullable = false)
-    private int userId;
-
     @Column(nullable = false, length = 50)
     private String authority;
 
@@ -41,14 +38,6 @@ public class Authority implements GrantedAuthority {
 
     public void setUsers(List<User> users) {
         this.users = users;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getAuthority() {
