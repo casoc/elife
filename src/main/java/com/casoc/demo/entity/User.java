@@ -13,6 +13,15 @@ public class User implements UserDetails {
 
     public static final String DEFAULT_PASSWORD = "123456";
 
+    public User() {
+    }
+
+    public User(String username, String password, String enabled) {
+        this.username = username;
+        this.password = password;
+        this.enabled = enabled;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -40,15 +49,15 @@ public class User implements UserDetails {
     }
 
     public boolean isAccountNonExpired() {
-        return false;
+        return true;
     }
 
     public boolean isAccountNonLocked() {
-        return false;
+        return this.enabled.equals("1");
     }
 
     public boolean isCredentialsNonExpired() {
-        return false;
+        return true;
     }
 
     public boolean isEnabled() {
