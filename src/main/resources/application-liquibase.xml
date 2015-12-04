@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+       <context:property-placeholder location="classpath:properties/database.properties"/>
+
+       <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+              <property name="dataSource" ref="dataSource"/>
+              <property name="changeLog" value="classpath:changelog.xml"/>
+
+              <!--
+              contexts specifies the runtime contexts to use.
+              -->
+              <property name="contexts" value="test, production"/>
+       </bean>
+
+       <bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+              <property name="dataSource" ref="dataSource"/>
+              <property name="hibernateProperties" value="classpath:properties/hibernate.properties"/>
+              <property name="packagesToScan" value="com.casoc.demo.entity" />
+       </bean>
+       
+       <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+              <property name="sessionFactory" ref="sessionFactory" />
+       </bean>
+
+       <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+              <property name="url" value="${development.url}"/>
+              <property name="driverClassName" value="${development.driver}"/>
+              <property name="username" value="${development.username}"/>
+              <property name="password" value="${development.password}"/>
+       </bean>
+
+</beans>

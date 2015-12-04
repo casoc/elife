@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<b:beans xmlns="http://www.springframework.org/schema/security"
+         xmlns:b="http://www.springframework.org/schema/beans"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+              http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+              http://www.springframework.org/schema/security
+              http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+    <!-- 开启Spring Security Annotation支持 -->
+    <global-method-security secured-annotations="enabled" />
+
+    <!-- 自动配置模式，拦截所有请求，下面配置的顺序将影响拦截器的顺序，所以/**应该放在最后 -->
+    <http auto-config="true" access-denied-page="/accessDenied.html">
+        <intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS" />
+        <form-login login-page="/login" authentication-failure-url="/login?login_error=1" />
+        <logout logout-success-url="/login"/>
+
+        <!-- 会话管理配置 -->
+        <session-management invalid-session-url="/sessionTimeout.html">
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
+        </session-management>
+    </http>
+
+    <authentication-manager>
+        <authentication-provider>
+            <!-- 使用MD5加密密码 -->
+            <password-encoder hash="md5" />
+                <jdbc-user-service data-source-ref="dataSource" />
+        </authentication-provider>
+    </authentication-manager>
+
+    <b:bean id="messageSource"
+            class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <b:property name="basename"
+                    value="classpath:i18n/message_uk_UA" />
+    </b:bean>
+
+    <!-- 使用Spring Security标签需要加入这个Bean -->
+    <b:bean id="webexpressionHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler" />
+
+    <b:import resource="application-liquibase.xml" />
+
+</b:beans>
