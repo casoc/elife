@@ -1,9 +1,11 @@
 package com.casoc.demo.website.admin.usermanage.service;
 
 import com.casoc.demo.entity.User;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,6 +17,15 @@ public class AdminUserManageService {
 
     public List<User> getAllUsers() {
         return hibernateTemplate.find("from User user");
+    }
+
+    @Transactional(value = "hibernateTransactionManager", readOnly = true)
+    public List<User> getAllUsersWithAuthorities() {
+        List<User> allUsers = getAllUsers();
+        for(User user : allUsers) {
+            Hibernate.initialize(user.getAuthorities());
+        }
+        return allUsers;
     }
 
     public List<User> getAllEnabledUsers() {

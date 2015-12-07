@@ -25,6 +25,7 @@
     </c:forEach>
     </tbody>
   </table>
-  <a href="/admin/user/new">Create new user</a>
+  <a href="/admin/user/new">Create new user</a><br/>
+  <a href="/admin/users.pdf">Download Users PDF</a>
   </body>
 </html>
