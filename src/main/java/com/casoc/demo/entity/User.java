@@ -1,5 +1,6 @@
 package com.casoc.demo.entity;
 
+import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -98,5 +99,9 @@ public class User implements UserDetails {
 
     public void setAuthorities(List<Authority> authorities) {
         this.authorities = authorities;
+    }
+
+    public void loadAuthorities() {
+        Hibernate.initialize(this.getAuthorities());
     }
 }

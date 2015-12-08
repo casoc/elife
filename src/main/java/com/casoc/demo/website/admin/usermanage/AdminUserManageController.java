@@ -1,14 +1,8 @@
 package com.casoc.demo.website.admin.usermanage;
 
-import com.casoc.demo.common.FreeMarkerUtil;
 import com.casoc.demo.entity.User;
 import com.casoc.demo.website.admin.usermanage.service.AdminUserManageService;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
@@ -16,11 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.ResourceBundle;
 
 @Controller
 @RequestMapping("/admin")
@@ -74,19 +65,6 @@ public class AdminUserManageController {
 
     @RequestMapping(value = "/users.pdf", method = RequestMethod.GET)
     public ResponseEntity<String> downloadUsersPdf() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentDispositionFormData("attachment", "users.html");
-        headers.setContentType(MediaType.TEXT_HTML);
-        try {
-            Template template = FreeMarkerUtil.getTemplate("users.ftl");
-            Map<String, List<User>> map = new HashMap<String, List<User>>();
-            map.put("users", adminUserManageService.getAllUsersWithAuthorities());
-            return new ResponseEntity<String>(FreeMarkerUtil.getHtml(template, map), headers, HttpStatus.CREATED);
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (TemplateException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return adminUserManageService.getUsersPdf();
     }
 }
