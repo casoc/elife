@@ -64,7 +64,7 @@ public class AdminUserManageController {
     }
 
     @RequestMapping(value = "/users.pdf", method = RequestMethod.GET)
-    public ResponseEntity<String> downloadUsersPdf() {
+    public ResponseEntity<byte[]> downloadUsersPdf() {
         return adminUserManageService.getUsersPdf();
     }
 }

@@ -1,10 +1,9 @@
 package com.casoc.demo.website.admin.usermanage.service;
 
-import com.casoc.demo.common.FreeMarkerUtil;
 import com.casoc.demo.entity.User;
+import com.lowagie.text.DocumentException;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
-import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -20,6 +19,7 @@ import java.util.List;
 import java.util.Map;
 
 import static ch.lambdaj.Lambda.forEach;
+import static com.casoc.demo.common.FreeMarkerUtil.*;
 
 @Service
 public class AdminUserManageService {
@@ -65,21 +65,24 @@ public class AdminUserManageService {
     }
 
     @Transactional(value = "hibernateTransactionManager", readOnly = true)
-    public ResponseEntity<String> getUsersPdf() {
+    public ResponseEntity<byte[]> getUsersPdf() {
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentDispositionFormData("attachment", "users.html");
+        headers.setContentDispositionFormData("attachment", "users.pdf");
         headers.setContentType(MediaType.TEXT_HTML);
         try {
-            Template template = FreeMarkerUtil.getTemplate("users.ftl");
+            Template template = getTemplate("users.ftl");
             Map<String, List<User>> map = new HashMap<String, List<User>>();
             map.put("users", getAllUsersWithAuthorities());
-            return new ResponseEntity<String>(FreeMarkerUtil.getHtml(template, map), headers, HttpStatus.CREATED);
+            String html = getHtml(template, map);
+            return new ResponseEntity<byte[]>(convertHtmlToPdf(html), headers, HttpStatus.CREATED);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (TemplateException e) {
             e.printStackTrace();
+        } catch (DocumentException e) {
+            e.printStackTrace();
         }
-        return null;
+        return new ResponseEntity<byte[]>(HttpStatus.NO_CONTENT);
     }
 
 }
