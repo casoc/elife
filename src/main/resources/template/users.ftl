@@ -1,16 +1,17 @@
 <html>
 <head>
-    <title>Users List</title>
+    <title>Users Report</title>
 </head>
 <body>
+<h3>Users List</h3>
+
 <div>
-    <h1>Users List:</h1>
     <table>
         <thead>
         <tr>
-            <th>User Name</th>
-            <th>Authorities</th>
-            <th>Enabled</th>
+            <td>Name</td>
+            <td>Authority</td>
+            <td>Enable</td>
         </tr>
         </thead>
         <tbody>
