@@ -19,7 +19,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:application-unit-test.xml" })
+@ContextConfiguration(locations = {"classpath:application-unit-test.xml"})
 public class UserTest {
 
     @Autowired

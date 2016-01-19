@@ -12,7 +12,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "classpath:application-unit-test.xml" })
+@ContextConfiguration(locations = {"classpath:application-unit-test.xml"})
 public class AuthorityTest {
 
     @Autowired

@@ -15,6 +15,9 @@
                 should visit <span concordion:assertEquals="loginSuccess()">index</span> page after login success.
             </li>
             <li>
+                should log off and redirect to <span concordion:assertEquals="logoffSuccess()">Session Timeout</span> page.
+            </li>
+            <li>
                 <p>should have below error message:</p>
                 <ul>
                     <li><span concordion:assertEquals="nonexistentUserLogin()">bad credentials</span> when username don't exits</li>

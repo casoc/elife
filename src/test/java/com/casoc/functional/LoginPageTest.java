@@ -37,8 +37,14 @@ public class LoginPageTest {
         return firefoxDriver.getTitle();
     }
 
+    public String logoffSuccess() {
+        WebElement logoffLink = firefoxDriver.findElement(By.linkText("login out"));
+        logoffLink.click();
+        return firefoxDriver.getTitle();
+    }
+
     public String nonexistentUserLogin() {
-        firefoxDriver.get("http://localhost:8080/login.jsp");
+        firefoxDriver.get("http://localhost:8080/");
         useUsernameAndPasswordLogin(firefoxDriver, "nonexistentUser", "nonexistentUser");
         return getErrorMessage(firefoxDriver);
     }
