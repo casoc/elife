@@ -46,7 +46,6 @@ public class UserTest {
                 user.setId(resultSet.getInt(1));
             }
         });
-        assertThat(user.getId(), is(1));
         assertThat(user.getUsername(), is("super"));
     }
 }
