@@ -13,9 +13,10 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-    <link rel="stylesheet" href="bootstrap.css">
-    <link rel="stylesheet" href="form-elements.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/form-elements.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -26,10 +27,10 @@
 
     <!-- Favicon and touch icons -->
     <link rel="shortcut icon" href="favicon.png">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="aapple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="image/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="image/aapple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="image/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="image/apple-touch-icon-57-precomposed.png">
 
 </head>
 
@@ -91,13 +92,13 @@
 
 
 <!-- Javascript -->
-<script src="jquery-1.11.1.js"></script>
-<script src="bootstrap.js"></script>
-<script src="jquery.backstretch.js"></script>
-<script src="scripts.js"></script>
+<script src="js/jquery-1.11.1.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/jquery.backstretch.js"></script>
+<script src="js/scripts.js"></script>
 
 <!--[if lt IE 10]>
-<script src="placeholder.js"></script>
+<script src="js/placeholder.js"></script>
 <![endif]-->
 
 </body>

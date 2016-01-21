@@ -11,13 +11,13 @@
     <global-method-security secured-annotations="enabled" />
 
     <!-- 自动配置模式，拦截所有请求，下面配置的顺序将影响拦截器的顺序，所以/**应该放在最后 -->
-    <http auto-config="true" access-denied-page="/accessDenied.html">
+    <http auto-config="true" access-denied-page="/static/accessDenied.html">
         <intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS" />
         <form-login login-page="/login" authentication-failure-url="/login?login_error=1" />
         <logout logout-success-url="/login"/>
 
         <!-- 会话管理配置 -->
-        <session-management invalid-session-url="/sessionTimeout.html">
+        <session-management invalid-session-url="/static/sessionTimeout.html">
             <concurrency-control max-sessions="1" error-if-maximum-exceeded="true"/>
         </session-management>
     </http>

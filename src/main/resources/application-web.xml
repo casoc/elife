@@ -21,10 +21,10 @@
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/website/"
           p:suffix=".jsp"/>
 
-    <mvc:resources mapping="/*.html" location="/static/html/**" />
-    <mvc:resources mapping="/*.js" location="/static/javascript/**" />
-    <mvc:resources mapping="/*.css" location="/static/style/**" />
-    <mvc:resources mapping="/*.jpg" location="/static/image/**" />
-    <mvc:resources mapping="/*.png" location="/static/image/**" />
+    <mvc:resources mapping="/static/**" location="/static/html/" />
+    <mvc:resources mapping="/js/**" location="/static/javascript/" />
+    <mvc:resources mapping="/css/**" location="/static/style/" />
+    <mvc:resources mapping="/image/**" location="/static/image/" />
+    <mvc:resources mapping="/font/**" location="/static/font/" />
     <mvc:annotation-driven/>
 </beans>
