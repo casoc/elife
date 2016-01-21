@@ -45,7 +45,7 @@
                 <div class="col-sm-8 col-sm-offset-2 text">
                     <h1>User Login</h1>
                     <c:if test="${param.login_error != null}">
-                        <div class="alert alert-danger" role="alert">
+                        <div class="alert alert-danger" role="alert" id="errorMessage">
                             <c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}"/>
                         </div>
                     </c:if>
