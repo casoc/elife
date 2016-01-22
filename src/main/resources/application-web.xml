@@ -21,10 +21,11 @@
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/website/"
           p:suffix=".jsp"/>
 
-    <mvc:resources mapping="/static/**" location="/static/html/" />
+    <mvc:resources mapping="/static/**" location="/static/htmls/" />
     <mvc:resources mapping="/js/**" location="/static/javascript/" />
     <mvc:resources mapping="/css/**" location="/static/style/" />
-    <mvc:resources mapping="/image/**" location="/static/image/" />
-    <mvc:resources mapping="/font/**" location="/static/font/" />
+    <mvc:resources mapping="/image/**" location="/static/images/" />
+    <mvc:resources mapping="/font/**" location="/static/fonts/" />
+    <mvc:resources mapping="/avatars/**" location="/static/avatars/" />
     <mvc:annotation-driven/>
 </beans>

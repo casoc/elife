@@ -14,7 +14,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/font-awesome.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
     <link rel="stylesheet" href="css/form-elements.css">
     <link rel="stylesheet" href="css/style.css">
 
@@ -26,7 +26,7 @@
     <![endif]-->
 
     <!-- Favicon and touch icons -->
-    <link rel="shortcut icon" href="favicon.png">
+    <link rel="shortcut icon" href="image/favicon.png">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="image/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="image/aapple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="image/apple-touch-icon-72-precomposed.png">
@@ -60,7 +60,7 @@
                             <p>Enter your username and password to log on:</p>
                         </div>
                         <div class="form-top-right">
-                            <i class="fa fa-lock"></i>
+                            <i class="icon icon-lock"></i>
                         </div>
                     </div>
                     <div class="form-bottom">
@@ -92,7 +92,7 @@
 
 
 <!-- Javascript -->
-<script src="js/jquery-1.11.1.js"></script>
+<script src="js/jquery-1.10.2.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/jquery.backstretch.js"></script>
 <script src="js/scripts.js"></script>
