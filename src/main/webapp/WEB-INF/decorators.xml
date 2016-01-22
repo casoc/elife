@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<decorators defaultdir="/decorators">
+
+    <!-- use to define default decorator -->
+    <!--<decorator name="default" page="default.jsp">-->
+        <!--<pattern>/*</pattern>-->
+    <!--</decorator>-->
+
+    <decorator name="admin" page="adminDecorator.jsp">
+        <pattern>/admin/*</pattern>
+    </decorator>
+
+    <decorator name="none">
+        <!-- These files will not get decorated. -->
+        <pattern>/static/*</pattern>
+        <pattern>/css/*</pattern>
+    </decorator>
+
+</decorators>
