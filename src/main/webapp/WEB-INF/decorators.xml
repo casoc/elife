@@ -15,6 +15,7 @@
         <!-- These files will not get decorated. -->
         <pattern>/static/*</pattern>
         <pattern>/css/*</pattern>
+        <pattern>/admin/users.pdf</pattern>
     </decorator>
 
 </decorators>

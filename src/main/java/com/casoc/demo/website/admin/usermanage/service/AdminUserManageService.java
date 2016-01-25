@@ -68,7 +68,7 @@ public class AdminUserManageService {
     public ResponseEntity<byte[]> getUsersPdf() {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentDispositionFormData("attachment", "users.pdf");
-        headers.setContentType(MediaType.TEXT_HTML);
+        headers.setContentType(MediaType.APPLICATION_XHTML_XML);
         try {
             Template template = getTemplate("users.ftl");
             Map<String, List<User>> map = new HashMap<String, List<User>>();
