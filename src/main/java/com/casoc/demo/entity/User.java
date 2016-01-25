@@ -33,8 +33,8 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 50)
     private String password;
 
-    @Column(nullable = false, length = 1)
-    private String enabled;
+    @Column(nullable = false, length = 1, columnDefinition = "off")
+    private String enabled = "off";
 
     @ManyToMany
     @MapKey(name = "id")
@@ -54,7 +54,7 @@ public class User implements UserDetails {
     }
 
     public boolean isAccountNonLocked() {
-        return this.enabled.equals("1");
+        return this.enabled.equals("on");
     }
 
     public boolean isCredentialsNonExpired() {
@@ -62,7 +62,7 @@ public class User implements UserDetails {
     }
 
     public boolean isEnabled() {
-        return this.enabled.equals("1");
+        return this.enabled.equals("on");
     }
 
     public void setUsername(String username) {

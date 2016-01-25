@@ -6,8 +6,17 @@
     <title>edit user</title>
 </head>
 <body>
-  <form:form action="/admin/users" method="put">
-      <%@ include file="form.jsp"%>
-  </form:form>
+<div class="page-header">
+    <h1>
+        Manage User
+        <small>
+            <i class="icon-double-angle-right"></i>
+            update user
+        </small>
+    </h1>
+</div>
+<form:form action="/admin/users" method="put" cssClass="form-horizontal">
+    <%@ include file="form.jsp" %>
+</form:form>
 </body>
 </html>

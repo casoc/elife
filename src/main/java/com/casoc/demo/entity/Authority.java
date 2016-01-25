@@ -20,8 +20,8 @@ public class Authority implements GrantedAuthority {
     @Column(length = 100)
     private String comment;
 
-    @Column(nullable = false, length = 1)
-    private String enabled;
+    @Column(nullable = false, length = 10, columnDefinition = "off")
+    private String enabled = "off";
 
     @ManyToMany
     @MapKey(name = "id")

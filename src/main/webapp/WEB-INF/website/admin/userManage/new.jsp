@@ -2,11 +2,20 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 <html>
 <head>
-    <title>new article</title>
+    <title>create user</title>
 </head>
 <body>
-  <form action="/admin/users" method="post">
-      <%@ include file="form.jsp"%>
-  </form>
+<div class="page-header">
+    <h1>
+        Manage User
+        <small>
+            <i class="icon-double-angle-right"></i>
+            create user
+        </small>
+    </h1>
+</div>
+<form action="/admin/users" method="post" class="form-horizontal">
+    <%@ include file="form.jsp" %>
+</form>
 </body>
 </html>
