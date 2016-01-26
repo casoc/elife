@@ -33,7 +33,7 @@ public class User implements UserDetails {
     @Column(nullable = false, length = 50)
     private String password;
 
-    @Column(nullable = false, length = 1, columnDefinition = "off")
+    @Column(nullable = false, length = 10, columnDefinition = "off")
     private String enabled = "off";
 
     @ManyToMany
