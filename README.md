@@ -12,6 +12,7 @@
  6. Selenium webdriver
  7. concordion
  8. JNDI
+ 9. Sitemesh 2
  
 ##How to use?	
 1. create the databases named 'web_demo' and 'web_demo_test'
